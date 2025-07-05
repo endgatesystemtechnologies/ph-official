@@ -100,7 +100,7 @@
             </b-table-column>
           </b-table>
         </template>
-        <a href="https://listmonk.app/docs/roles-and-permissions" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.endgate.systems/privatehouse" target="_blank" rel="noopener noreferrer">
           <b-icon icon="link-variant" /> {{ $t('globals.buttons.learnMore') }}
         </a>
       </section>
