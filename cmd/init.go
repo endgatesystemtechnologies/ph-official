@@ -335,13 +335,14 @@ func readQueries(sqlFile string, fs stuffbin.FileSystem) goyesql.Queries {
 	return qMap
 }
 
-// Bypass all notifs - empty no-op init
-notifs.Initialize(notifs.Opt{
-    FromEmail:           "no-reply@privatehouse.com",
-    SystemEmails:        []string{}, // empty list disables sending
-    ContentType:         "text/html",
-    DisableUpdateBanner: true,
-}, nil, nil, nil)
+func init() {
+    notifs.Initialize(notifs.Opt{
+        FromEmail:           "no-reply@privatehouse.com",
+        SystemEmails:        []string{"nic@io.endgate.systems"},
+        ContentType:         "text/html",
+        DisableUpdateBanner: true,
+    }, nil, nil, nil)
+}
 
 
 
