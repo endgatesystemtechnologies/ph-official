@@ -5,7 +5,6 @@
 package notifs
 
 import (
-	"bytes"
 	"html/template"
 	"log"
 	"net/textproto"
