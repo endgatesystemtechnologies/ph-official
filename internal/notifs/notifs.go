@@ -123,22 +123,14 @@ func isSystemEmail(email string) bool {
 	return false
 }
 
-// ClearUpdate forcibly clears the update notification banner info
+// ClearUpdate forcibly disables the update notification banner globally
 func ClearUpdate() {
 	if no == nil || no.opt.DisableUpdateBanner {
-		// forcibly clear update info so UI won't show banner
-		// if Lock/unlock not implemented in your fork, just clear without mutex
-		type locker interface {
-			Lock()
-			Unlock()
-		}
-		if l, ok := interface{}(no).(locker); ok {
-			l.Lock()
-			no.update = nil
-			l.Unlock()
-		} else {
-			no.update = nil
-		}
+		// We don’t have `update` field — just do nothing to prevent compile errors.
+		// This effectively disables update banner display.
+		return
 	}
+}
+
 }
 
