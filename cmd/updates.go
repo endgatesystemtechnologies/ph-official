@@ -83,5 +83,11 @@ func (a *App) checkUpdates(curVersion string, interval time.Duration) {
 	fnCheck()
 
 	// Thereafter, check every $interval.
-	ticker := time.NewTi
+	ticker := time.NewTicker(interval)
+	defer ticker.Stop()
+
+	for range ticker.C {
+		fnCheck()
+	}
+}
 
