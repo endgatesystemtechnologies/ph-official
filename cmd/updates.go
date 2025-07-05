@@ -1,3 +1,36 @@
+package main
+
+import (
+	"encoding/json"
+	"io"
+	"net/http"
+	"regexp"
+	"time"
+
+	"golang.org/x/mod/semver"
+)
+
+const updateCheckURL = "https://update.listmonk.app/update.json"
+
+var reSemver = regexp.MustCompile(`-(.*)`)
+
+type AppUpdate struct {
+	Update struct {
+		ReleaseVersion string `json:"release_version"`
+		ReleaseDate    string `json:"release_date"`
+		URL            string `json:"url"`
+		Description    string `json:"description"`
+		IsNew          bool   `json:"is_new"`
+	} `json:"update"`
+	Messages []struct {
+		Date        string `json:"date"`
+		Title       string `json:"title"`
+		Description string `json:"description"`
+		URL         string `json:"url"`
+		Priority    string `json:"priority"`
+	} `json:"messages"`
+}
+
 // checkUpdates is a blocking function that checks for updates to the app
 // at the given intervals. On detecting a new update (new semver), it
 // sets the global update status that renders a prompt on the UI.
@@ -50,11 +83,5 @@ func (a *App) checkUpdates(curVersion string, interval time.Duration) {
 	fnCheck()
 
 	// Thereafter, check every $interval.
-	ticker := time.NewTicker(interval)
-	defer ticker.Stop()
-
-	for range ticker.C {
-		fnCheck()
-	}
-}
+	ticker := time.NewTi
 
