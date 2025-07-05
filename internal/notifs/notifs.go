@@ -7,7 +7,7 @@ import (
 	"net/textproto"
 	"regexp"
 	"strings"
-	
+
 	"github.com/knadh/listmonk/internal/messenger/email"
 	"github.com/knadh/listmonk/models"
 )
@@ -131,5 +131,4 @@ func ClearUpdate() {
 		return
 	}
 }
-
 
