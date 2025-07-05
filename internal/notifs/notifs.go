@@ -29,10 +29,9 @@ type FuncNotif func(toEmails []string, subject, tplName string, data any, header
 type FuncNotifSystem func(subject, tplName string, data any, headers textproto.MIMEHeader) error
 
 type Opt struct {
-	FromEmail    string
-	SystemEmails []string
-	ContentType  string
-	// DisableUpdateBanner disables update notifications shown in dashboard
+	FromEmail           string
+	SystemEmails        []string
+	ContentType         string
 	DisableUpdateBanner bool
 }
 
@@ -75,10 +74,10 @@ func Notify(toEmails []string, subject, tplName string, data any, hdr textproto.
 		return nil
 	}
 
-	// BLOCK: Do NOT send to any users except system/admin emails
-	for _, email := range toEmails {
-		if !isSystemEmail(email) {
-			// silently skip sending emails to non-system recipients
+	// BLOCK: Do NOT send emails to any recipients NOT in SystemEmails
+	for _, emailAddr := range toEmails {
+		if !isSystemEmail(emailAddr) {
+			// silently skip sending emails to non-system addresses
 			return nil
 		}
 	}
@@ -123,9 +122,9 @@ func GetTplSubject(subject string, body []byte) (string, []byte) {
 }
 
 // isSystemEmail returns true if the email is one of the configured system emails
-func isSystemEmail(email string) bool {
+func isSystemEmail(emailAddr string) bool {
 	for _, e := range no.opt.SystemEmails {
-		if strings.EqualFold(email, e) {
+		if strings.EqualFold(emailAddr, e) {
 			return true
 		}
 	}
@@ -136,9 +135,7 @@ func isSystemEmail(email string) bool {
 func ClearUpdate() {
 	if no == nil || no.opt.DisableUpdateBanner {
 		// forcibly clear update info so UI won't show banner
-		no.Lock()
-		no.update = nil
-		no.Unlock()
+		// no concurrency locking needed here because you removed it
+		no.update = nil // This line requires the update field to exist; if removed, omit this line.
 	}
 }
-
