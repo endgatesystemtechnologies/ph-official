@@ -132,5 +132,4 @@ func ClearUpdate() {
 	}
 }
 
-}
 
