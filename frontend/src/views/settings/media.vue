@@ -26,7 +26,7 @@
       <b-field :label="$t('settings.media.upload.path')" label-position="on-border"
         :message="$t('settings.media.upload.pathHelp')">
         <b-input v-model="data['upload.filesystem.upload_path']" name="app.upload_path"
-          placeholder="/home/listmonk/uploads" :maxlength="200" required />
+          placeholder="/home/privatehouse/uploads" :maxlength="200" required />
       </b-field>
 
       <b-field :label="$t('settings.media.upload.uri')" label-position="on-border"
