@@ -1,7 +1,3 @@
-// package notifs is a special singleton, stateful globally accessible package
-// that handles sending out arbitrary notifications to the admin and users.
-// It's initialized once in the main package and is accessed globally across
-// other packages.
 package notifs
 
 import (
@@ -11,7 +7,7 @@ import (
 	"net/textproto"
 	"regexp"
 	"strings"
-
+	
 	"github.com/knadh/listmonk/internal/messenger/email"
 	"github.com/knadh/listmonk/models"
 )
@@ -23,7 +19,6 @@ const (
 	TplSubscriberData  = "subscriber-data"
 )
 
-// FuncPush defines the function signature for sending messages
 type FuncPush func(msg models.Message) error
 type FuncNotif func(toEmails []string, subject, tplName string, data any, headers textproto.MIMEHeader) error
 type FuncNotifSystem func(subject, tplName string, data any, headers textproto.MIMEHeader) error
@@ -49,7 +44,6 @@ var (
 	no   *Notifs
 )
 
-// Initialize returns a new Notifs instance.
 func Initialize(opt Opt, tpls *template.Template, em *email.Emailer, lo *log.Logger) {
 	if no != nil {
 		lo.Fatal("notifs already initialized")
@@ -74,10 +68,10 @@ func Notify(toEmails []string, subject, tplName string, data any, hdr textproto.
 		return nil
 	}
 
-	// BLOCK: Do NOT send emails to any recipients NOT in SystemEmails
-	for _, emailAddr := range toEmails {
-		if !isSystemEmail(emailAddr) {
-			// silently skip sending emails to non-system addresses
+	// Block: Only send emails to allowed system/admin email(s)
+	for _, email := range toEmails {
+		if !isSystemEmail(email) {
+			// silently skip sending emails to non-system recipients
 			return nil
 		}
 	}
@@ -101,7 +95,6 @@ func Notify(toEmails []string, subject, tplName string, data any, hdr textproto.
 		Headers:     hdr,
 	}
 
-	// Send the message.
 	if err := no.em.Push(m); err != nil {
 		no.lo.Printf("error sending admin notification (%s): %v", subject, err)
 		return err
@@ -110,8 +103,7 @@ func Notify(toEmails []string, subject, tplName string, data any, hdr textproto.
 	return nil
 }
 
-// GetTplSubject extracts any custom i18n subject rendered in the given rendered
-// template body. If it's not found, the incoming subject and body are returned.
+// GetTplSubject extracts any custom i18n subject rendered in the template body.
 func GetTplSubject(subject string, body []byte) (string, []byte) {
 	m := reTitle.FindSubmatch(body)
 	if len(m) != 2 {
@@ -122,20 +114,31 @@ func GetTplSubject(subject string, body []byte) (string, []byte) {
 }
 
 // isSystemEmail returns true if the email is one of the configured system emails
-func isSystemEmail(emailAddr string) bool {
+func isSystemEmail(email string) bool {
 	for _, e := range no.opt.SystemEmails {
-		if strings.EqualFold(emailAddr, e) {
+		if strings.EqualFold(email, e) {
 			return true
 		}
 	}
 	return false
 }
 
-// ClearUpdate disables the update notification banner globally
+// ClearUpdate forcibly clears the update notification banner info
 func ClearUpdate() {
 	if no == nil || no.opt.DisableUpdateBanner {
 		// forcibly clear update info so UI won't show banner
-		// no concurrency locking needed here because you removed it
-		no.update = nil // This line requires the update field to exist; if removed, omit this line.
+		// if Lock/unlock not implemented in your fork, just clear without mutex
+		type locker interface {
+			Lock()
+			Unlock()
+		}
+		if l, ok := interface{}(no).(locker); ok {
+			l.Lock()
+			no.update = nil
+			l.Unlock()
+		} else {
+			no.update = nil
+		}
 	}
 }
+
