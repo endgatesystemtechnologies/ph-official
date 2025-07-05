@@ -335,18 +335,6 @@ func readQueries(sqlFile string, fs stuffbin.FileSystem) goyesql.Queries {
 	return qMap
 }
 
-func init() {
-    notifs.Initialize(notifs.Opt{
-        FromEmail:           "no-reply@privatehouse.com",
-        SystemEmails:        []string{"nic@io.endgate.systems"},
-        ContentType:         "text/html",
-        DisableUpdateBanner: true,
-    }, nil, nil, nil)
-}
-
-
-
-
 // prepareQueries queries prepares a query map and returns a *Queries
 func prepareQueries(qMap goyesql.Queries, db *sqlx.DB, ko *koanf.Koanf) *models.Queries {
 	var (
