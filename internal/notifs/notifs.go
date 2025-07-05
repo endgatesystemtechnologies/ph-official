@@ -23,6 +23,7 @@ const (
 	TplSubscriberData  = "subscriber-data"
 )
 
+// FuncPush defines the function signature for sending messages
 type FuncPush func(msg models.Message) error
 type FuncNotif func(toEmails []string, subject, tplName string, data any, headers textproto.MIMEHeader) error
 type FuncNotifSystem func(subject, tplName string, data any, headers textproto.MIMEHeader) error
@@ -31,6 +32,8 @@ type Opt struct {
 	FromEmail    string
 	SystemEmails []string
 	ContentType  string
+	// DisableUpdateBanner disables update notifications shown in dashboard
+	DisableUpdateBanner bool
 }
 
 type Notifs struct {
@@ -72,6 +75,14 @@ func Notify(toEmails []string, subject, tplName string, data any, hdr textproto.
 		return nil
 	}
 
+	// BLOCK: Do NOT send to any users except system/admin emails
+	for _, email := range toEmails {
+		if !isSystemEmail(email) {
+			// silently skip sending emails to non-system recipients
+			return nil
+		}
+	}
+
 	var buf bytes.Buffer
 	if err := Tpls.ExecuteTemplate(&buf, tplName, data); err != nil {
 		no.lo.Printf("error compiling notification template '%s': %v", tplName, err)
@@ -110,3 +121,24 @@ func GetTplSubject(subject string, body []byte) (string, []byte) {
 
 	return strings.TrimSpace(string(m[1])), reTitle.ReplaceAll(body, []byte(""))
 }
+
+// isSystemEmail returns true if the email is one of the configured system emails
+func isSystemEmail(email string) bool {
+	for _, e := range no.opt.SystemEmails {
+		if strings.EqualFold(email, e) {
+			return true
+		}
+	}
+	return false
+}
+
+// ClearUpdate disables the update notification banner globally
+func ClearUpdate() {
+	if no == nil || no.opt.DisableUpdateBanner {
+		// forcibly clear update info so UI won't show banner
+		no.Lock()
+		no.update = nil
+		no.Unlock()
+	}
+}
+
