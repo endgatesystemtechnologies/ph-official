@@ -110,7 +110,7 @@ input[disabled] {
   margin-bottom: 30px;
 }
 .header .logo img {
-  width: 250px;  /* increase width explicitly */
+  width: 30px;  /* increase width explicitly */
   max-width: none; /* remove max-width limit */
   height: auto;    /* maintain aspect ratio */
 }
