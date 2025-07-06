@@ -243,16 +243,8 @@ func installCampaign(campTplID, archiveTplID int, q *models.Queries) {
 	if _, err := q.CreateCampaign.Exec(uuid.Must(uuid.NewV4()),
 		models.CampaignTypeRegular,
 		"Test campaign",
-		"Welcome to listmonk",
+		"Welcome to PrivateHouse",
 		"No Reply <noreply@yoursite.com>",
-		`<h3>Hi {{ .Subscriber.FirstName }}!</h3>
-		<p>This is a test e-mail campaign. Your second name is {{ .Subscriber.LastName }} and you are from {{ .Subscriber.Attribs.city }}.</p>
-		<p>Here is a <a href="https://listmonk.app@TrackLink">tracked link</a>.</p>
-		<p>Use the link icon in the editor toolbar or when writing raw HTML or Markdown,
-			simply suffix @TrackLink to the end of a URL to turn it into a tracking link. Example:</p>
-		<pre>&lt;a href=&quot;https:/&zwnj;/listmonk.app&#064;TrackLink&quot;&gt;&lt;/a&gt;</pre>
-		<p>For help, refer to the <a href="https://listmonk.app/docs">documentation</a>.</p>
-		`,
 		nil,
 		"richtext",
 		nil,
@@ -262,7 +254,7 @@ func installCampaign(campTplID, archiveTplID int, q *models.Queries) {
 		campTplID,
 		pq.Int64Array{1},
 		false,
-		"welcome-to-listmonk",
+		"welcome-to-PrivateHouse",
 		archiveTplID,
 		`{"name": "Subscriber"}`,
 		nil,
