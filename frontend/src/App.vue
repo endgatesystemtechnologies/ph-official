@@ -9,8 +9,6 @@
         </div>
       </template>
       <template #end>
-      
-      <template #end>
         <navigation
           v-if="isMobile"
           :is-mobile="isMobile"
@@ -19,6 +17,12 @@
           @toggleGroup="toggleGroup"
           @doLogout="doLogout"
         />
+        <!-- Add your b-navbar-dropdown or other end slot content here -->
+      </template>
+    </b-navbar>
+    <!-- rest of your app content -->
+  </div>
+</template>
 
         <b-navbar-dropdown class="user" tag="div" right v-else>
           <template v-if="profile.username" #label>
