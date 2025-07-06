@@ -5,11 +5,11 @@
   <div class="logo">
     <router-link :to="{ name: 'dashboard' }">
       <img
-        class="full"
-        src="@/assets/logo.svg"
-        alt=""
-        style="width: 300px; height: auto; max-width: 100%;"
-      />
+  class="full"
+  src="@/assets/logo.svg"
+  alt=""
+  style="width: 400px !important; height: auto !important;"
+/>
       <img class="favicon" src="@/assets/favicon.png" alt="" />
     </router-link>
   </div>
