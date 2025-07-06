@@ -29,6 +29,10 @@
       display: flex;
       justify-content: center;
       padding: 20px 0;
+      padding-left: 10px; /* shift everything slightly right, so logo moves left visually */
+    }
+    .logo {
+      margin-left: -5px; /* nudge logo 5px left */
     }
     .logo img {
       width: 220px; /* Slightly smaller */
@@ -42,7 +46,7 @@
   <div class="container wrap">
     <header class="header">
       <div class="logo">
-        <a href="{{ if .EnablePublicSubPage }}{{ .RootURL}}/subscription/form{{ end }}">
+        <a href="{{ if .EnablePublicSubPage }}{{ .RootURL }}/subscription/form{{ end }}">
           <img
             src="https://raw.githubusercontent.com/endgatesystemtechnologies/ph-official/caff059841774438f628a1c917aab34506e662e1/frontend/src/assets/logo.svg"
             alt="{{ .Data.Title }}"
@@ -51,6 +55,7 @@
       </div>
     </header>
     {{ end }}
+
 
 {{ define "footer" }}
     </div>
