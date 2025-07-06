@@ -7,10 +7,9 @@
             <img
               class="full"
               src="@/assets/logo.svg"
-              alt=""
-              style="width: 400px !important; height: auto !important;"
+              alt="PrivateHouse"
+              style="width: 700px !important; height: auto !important;"
             />
-            <img class="favicon" src="@/assets/favicon.png" alt="" />
           </router-link>
         </div>
       </template>
