@@ -1251,9 +1251,9 @@ th.role-toggle-select a {
 /* Force the PH logo to fill the same space as the circle */
 .logo {
   width: 644px !important;
-  height: 48.75px !important;
+  height: auto !important;   /* let height scale with width */
   overflow: visible !important;
-  position: relative; /* allow z-index */
+  position: relative;
 }
 
 .logo img.full {
