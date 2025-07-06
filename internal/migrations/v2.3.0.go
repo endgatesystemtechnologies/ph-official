@@ -27,17 +27,16 @@ func V2_3_0(db *sqlx.DB, fs stuffbin.FileSystem, ko *koanf.Koanf, lo *log.Logger
 		`); err != nil {
 		return err
 	}
-
-	// Insert new preference settings.
-	if _, err := db.Exec(`
-		INSERT INTO settings (key, value) VALUES
- 			('app.site_name', '"Mailing list"'),
- 			('app.enable_public_archive', 'true'),
- 			('privacy.allow_preferences', 'false')
- 			ON CONFLICT DO NOTHING;
-	`); err != nil {
-		return err
-	}
-
-	return nil
+// Insert new preference settings.
+if _, err := db.Exec(`
+    INSERT INTO settings (key, value) VALUES
+        ('app.site_name', '"PrivateHouse"'),
+        ('app.enable_public_archive', 'true'),
+        ('privacy.allow_preferences', 'false')
+    ON CONFLICT DO NOTHING;
+`); err != nil {
+    return err
 }
+
+return nil
+
