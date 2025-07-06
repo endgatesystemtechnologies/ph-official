@@ -2,21 +2,28 @@
   <div id="app">
     <b-navbar :fixed-top="true" v-if="$root.isLoaded">
       <template #brand>
-  <div class="logo">
-    <router-link :to="{ name: 'dashboard' }">
-      <img
-  class="full"
-  src="@/assets/logo.svg"
-  alt=""
-  style="width: 400px !important; height: auto !important;"
-/>
-      <img class="favicon" src="@/assets/favicon.png" alt="" />
-    </router-link>
-  </div>
-</template>
+        <div class="logo">
+          <router-link :to="{ name: 'dashboard' }">
+            <img
+              class="full"
+              src="@/assets/logo.svg"
+              alt=""
+              style="width: 400px !important; height: auto !important;"
+            />
+            <img class="favicon" src="@/assets/favicon.png" alt="" />
+          </router-link>
+        </div>
+      </template>
+
       <template #end>
-        <navigation v-if="isMobile" :is-mobile="isMobile" :active-item="activeItem" :active-group="activeGroup"
-          @toggleGroup="toggleGroup" @doLogout="doLogout" />
+        <navigation
+          v-if="isMobile"
+          :is-mobile="isMobile"
+          :active-item="activeItem"
+          :active-group="activeGroup"
+          @toggleGroup="toggleGroup"
+          @doLogout="doLogout"
+        />
 
         <b-navbar-dropdown class="user" tag="div" right v-else>
           <template v-if="profile.username" #label>
@@ -36,8 +43,11 @@
               <b-icon icon="account-outline" /> {{ $t('users.profile') }}
             </router-link>
           </b-navbar-item>
+
           <b-navbar-item href="#">
-            <a href="#" @click.prevent="doLogout"><b-icon icon="logout-variant" /> {{ $t('users.logout') }}</a>
+            <a href="#" @click.prevent="doLogout">
+              <b-icon icon="logout-variant" /> {{ $t('users.logout') }}
+            </a>
           </b-navbar-item>
         </b-navbar-dropdown>
       </template>
@@ -48,12 +58,19 @@
         <b-sidebar position="static" mobile="hide" :fullheight="true" :open="true" :can-cancel="false">
           <div>
             <b-menu :accordion="false">
-              <navigation v-if="!isMobile" :is-mobile="isMobile" :active-item="activeItem" :active-group="activeGroup"
-                @toggleGroup="toggleGroup" />
+              <navigation
+                v-if="!isMobile"
+                :is-mobile="isMobile"
+                :active-item="activeItem"
+                :active-group="activeGroup"
+                @toggleGroup="toggleGroup"
+              />
             </b-menu>
           </div>
         </b-sidebar>
       </section>
+      <!-- sidebar-->
+
       <!-- sidebar-->
 
       <!-- body //-->
