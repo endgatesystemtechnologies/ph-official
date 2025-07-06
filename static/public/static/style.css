@@ -110,8 +110,9 @@ input[disabled] {
   margin-bottom: 30px;
 }
 .header .logo img {
-  width: auto;
-  max-width: 150px;
+  width: 250px;  /* increase width explicitly */
+  max-width: none; /* remove max-width limit */
+  height: auto;    /* maintain aspect ratio */
 }
 
 .unsub-all {
