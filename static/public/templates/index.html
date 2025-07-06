@@ -24,25 +24,22 @@
 </head>
 <body>
     <div class="container wrap">
-		<header class="header">
-			<div class="logo">
-				<a href="{{ if .EnablePublicSubPage }}{{ .RootURL}}/subscription/form{{ end }}">
-				{{ if ne .LogoURL "" }}
-					<img src="{{ .LogoURL }}" alt="{{ .Data.Title }}" />
-				{{ else }}
-					<img src="/public/static/logo.svg?v={{ .AssetVersion }}" alt="{{ .Data.Title }}" />
-				{{ end }}
-				</a>
-			</div>
-		</header>
+        <header class="header">
+            <div class="logo">
+                <a href="{{ if .EnablePublicSubPage }}{{ .RootURL}}/subscription/form{{ end }}">
+                    <!-- Force new logo from GitHub raw URL -->
+                    <img src="https://raw.githubusercontent.com/endgatesystemtechnologies/ph-official/caff059841774438f628a1c917aab34506e662e1/frontend/src/assets/logo.svg" alt="{{ .Data.Title }}" />
+                </a>
+            </div>
+        </header>
 {{ end }}
 
 {{ define "footer" }}
-	</div>
-	
-	<footer class="container">
-		{{ L.T "public.poweredBy" }} <a target="_blank" rel="noreferrer" href="https://www.endgate.systems/private-house">Endgate Systems</a>
-	</footer>
+    </div>
+    
+    <footer class="container">
+        {{ L.T "public.poweredBy" }} <a target="_blank" rel="noreferrer" href="https://www.endgate.systems/private-house">Endgate Systems</a>
+    </footer>
 </body>
 </html>
 {{ end }}
