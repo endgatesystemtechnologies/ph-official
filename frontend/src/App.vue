@@ -4,16 +4,12 @@
       <template #brand>
         <div class="logo">
           <router-link :to="{ name: 'dashboard' }">
-            <img
-              class="full"
-              src="@/assets/logo.svg"
-              alt="PrivateHouse"
-              style="width: 700px !important; height: auto !important;"
-            />
+            <img class="favicon" src="@/assets/favicon.png" alt="" />
           </router-link>
         </div>
       </template>
-
+      <template #end>
+      
       <template #end>
         <navigation
           v-if="isMobile"
