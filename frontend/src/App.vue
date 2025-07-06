@@ -2,13 +2,17 @@
   <div id="app">
     <b-navbar :fixed-top="true" v-if="$root.isLoaded">
       <template #brand>
-  <div class="logo">
-    <router-link :to="{ name: 'dashboard' }">
-      <img
+  <img
   class="full"
+  :style="{
+    width: '400px !important',
+    height: '120px !important',
+    maxWidth: 'none !important',
+    maxHeight: 'none !important',
+    marginTop: '0 !important'
+  }"
   src="@/assets/logo.svg"
   alt=""
-  style="width: 400px !important; height: 120px !important; max-width: none !important; max-height: none !important;"
 />
       <img class="favicon" src="@/assets/favicon.png" alt="" />
     </router-link>
