@@ -63,7 +63,7 @@ Retrieve all campaigns.
                 "uuid": "57702beb-6fae-4355-a324-c2fd5b59a549",
                 "type": "regular",
                 "name": "Test campaign",
-                "subject": "Welcome to listmonk",
+                "subject": "Welcome to PrivateHouse",
                 "from_email": "No Reply <noreply@yoursite.com>",
                 "body": "<h3>Hi {{ .Subscriber.FirstName }}!</h3>\n\t\t\tThis is a test e-mail campaign. Your second name is {{ .Subscriber.LastName }} and you are from {{ .Subscriber.Attribs.city }}.",
                 "body_source": null,
@@ -126,7 +126,7 @@ curl -u "api_user:token" -X GET 'http://localhost:9000/api/campaigns/1'
         "uuid": "57702beb-6fae-4355-a324-c2fd5b59a549",
         "type": "regular",
         "name": "Test campaign",
-        "subject": "Welcome to listmonk",
+        "subject": "Welcome to PrivateHouse",
         "from_email": "No Reply <noreply@yoursite.com>",
         "body": "<h3>Hi {{ .Subscriber.FirstName }}!</h3>\n\t\t\tThis is a test e-mail campaign. Your second name is {{ .Subscriber.LastName }} and you are from {{ .Subscriber.Attribs.city }}.",
         "body_source": null,
@@ -308,7 +308,7 @@ Create a new campaign.
 ##### Example request
 
 ```shell
-curl -u "api_user:token" 'http://localhost:9000/api/campaigns' -X POST -H 'Content-Type: application/json;charset=utf-8' --data-raw '{"name":"Test campaign","subject":"Hello, world","lists":[1],"from_email":"listmonk <noreply@listmonk.yoursite.com>","content_type":"richtext","messenger":"email","type":"regular","tags":["test"],"template_id":1}'
+curl -u "api_user:token" 'http://localhost:9000/api/campaigns' -X POST -H 'Content-Type: application/json;charset=utf-8' --data-raw '{"name":"Test campaign","subject":"Hello, world","lists":[1],"from_email":"Dakota <eg@endgate.systems","content_type":"richtext","messenger":"email","type":"regular","tags":["test"],"template_id":1}'
 ```
 
 ##### Example response
@@ -333,7 +333,7 @@ curl -u "api_user:token" 'http://localhost:9000/api/campaigns' -X POST -H 'Conte
         "type": "regular",
         "name": "Test campaign",
         "subject": "Hello, world",
-        "from_email": "listmonk \u003cnoreply@listmonk.yoursite.com\u003e",
+        "from_email": "Dakota noreply@eg@endgate.systems",
         "body": "",
         "body_source": null,
         "altbody": null,
@@ -427,7 +427,7 @@ curl -u "api_user:token" -X PUT 'http://localhost:9000/api/campaigns/1/status' \
         "uuid": "57702beb-6fae-4355-a324-c2fd5b59a549",
         "type": "regular",
         "name": "Test campaign",
-        "subject": "Welcome to listmonk",
+        "subject": "Welcome to PrivateHouse",
         "from_email": "No Reply <noreply@yoursite.com>",
         "body": "<h3>Hi {{ .Subscriber.FirstName }}!</h3>\n\t\t\tThis is a test e-mail campaign. Your second name is {{ .Subscriber.LastName }} and you are from {{ .Subscriber.Attribs.city }}.",
         "send_at": "2020-03-15T17:36:41.293233+01:00",
