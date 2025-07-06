@@ -2,13 +2,18 @@
   <div id="app">
     <b-navbar :fixed-top="true" v-if="$root.isLoaded">
       <template #brand>
-        <div class="logo">
-          <router-link :to="{ name: 'dashboard' }">
-            <img class="full" src="@/assets/logo.svg" alt="" />
-            <img class="favicon" src="@/assets/favicon.png" alt="" />
-          </router-link>
-        </div>
-      </template>
+  <div class="logo">
+    <router-link :to="{ name: 'dashboard' }">
+      <img
+        class="full"
+        src="@/assets/logo.svg"
+        alt=""
+        style="width: 300px; height: auto; max-width: 100%;"
+      />
+      <img class="favicon" src="@/assets/favicon.png" alt="" />
+    </router-link>
+  </div>
+</template>
       <template #end>
         <navigation v-if="isMobile" :is-mobile="isMobile" :active-item="activeItem" :active-group="activeGroup"
           @toggleGroup="toggleGroup" @doLogout="doLogout" />
