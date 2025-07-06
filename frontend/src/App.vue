@@ -8,7 +8,7 @@
   class="full"
   src="@/assets/logo.svg"
   alt=""
-  style="width: 400px !important; height: auto !important;"
+  style="width: 400px !important; height: 120px !important; max-width: none !important; max-height: none !important;"
 />
       <img class="favicon" src="@/assets/favicon.png" alt="" />
     </router-link>
