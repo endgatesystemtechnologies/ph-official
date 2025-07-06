@@ -222,19 +222,18 @@ section {
   box-shadow: 0 0 3px $grey-lighter;
 }
 .navbar-brand {
-  padding: 0 0 0 25px;
-  .favicon {
-    display: none;
-  }
   .full {
-    max-height: 17px;
-    margin-top: 15px;
+    max-height: 150px !important;  // blow it up big enough
+    height: auto !important;
+    width: auto !important;
+    margin-top: 0 !important;      // reset vertical shift for cleaner alignment
   }
   .favicon {
     margin-top: 12px;
     max-height: 24px;
   }
 }
+
 
 .b-sidebar {
   position: sticky;
