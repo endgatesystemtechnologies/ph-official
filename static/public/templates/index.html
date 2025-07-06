@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	
-	<title>{{ .Data.Title }} - {{ .SiteName }}</title>
+	<title>PrivateHouse</title>
 	<meta name="description" content="{{ .Data.Description }}" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
@@ -21,21 +21,36 @@
 	{{ else }}
 		<link rel="icon" href="/public/static/favicon.png?v={{ .AssetVersion }}" type="image/png" />
 	{{ end }}
+<head>
+  ...
+  <style>
+    /* Center and size the logo container */
+    .header {
+      display: flex;
+      justify-content: center;
+      padding: 20px 0;
+    }
+    .logo img {
+      width: 220px; /* Slightly smaller */
+      height: auto;
+      max-width: 100%;
+      display: block;
+    }
+  </style>
 </head>
 <body>
-    <div class="container wrap">
-       <header class="header">
-  <div class="logo">
-    <a href="{{ if .EnablePublicSubPage }}{{ .RootURL}}/subscription/form{{ end }}">
-      <img
-        src="https://raw.githubusercontent.com/endgatesystemtechnologies/ph-official/caff059841774438f628a1c917aab34506e662e1/frontend/src/assets/logo.svg"
-        alt="{{ .Data.Title }}"
-        style="width: 300px; height: auto; max-width: 100%;"
-      />
-    </a>
-  </div>
-</header>
-{{ end }}
+  <div class="container wrap">
+    <header class="header">
+      <div class="logo">
+        <a href="{{ if .EnablePublicSubPage }}{{ .RootURL}}/subscription/form{{ end }}">
+          <img
+            src="https://raw.githubusercontent.com/endgatesystemtechnologies/ph-official/caff059841774438f628a1c917aab34506e662e1/frontend/src/assets/logo.svg"
+            alt="{{ .Data.Title }}"
+          />
+        </a>
+      </div>
+    </header>
+    {{ end }}
 
 {{ define "footer" }}
     </div>
