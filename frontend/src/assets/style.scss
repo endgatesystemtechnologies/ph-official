@@ -219,8 +219,10 @@ section {
 }
 
 .navbar {
+  background-color: #0F6FFD !important;
   box-shadow: 0 0 3px $grey-lighter;
 }
+
 .navbar-brand {
   .full {
     max-height: 150px !important;  // blow it up big enough
@@ -228,6 +230,7 @@ section {
     width: auto !important;
     margin-top: 0 !important;      // reset vertical shift for cleaner alignment
   }
+
   .favicon {
     margin-top: 12px;
     max-height: 24px;
