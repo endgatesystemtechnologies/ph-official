@@ -39,4 +39,4 @@ if _, err := db.Exec(`
 }
 
 return nil
-
+}

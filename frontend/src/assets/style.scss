@@ -221,22 +221,36 @@ section {
 .navbar {
   background-color: #0F6FFD !important;
   box-shadow: 0 0 3px $grey-lighter;
-}
+  display: flex !important;
+  max-height: 48px !important; 
+  align-items: center !important;
+ }
+
 
 .navbar-brand {
+  flex: 1 !important;
+  display: flex !important;
+  margin: 0 auto !important;
+  align-items: center !important;
+  padding-left: 1rem !important;
+  display: block !important;
+
   .full {
-    max-height: 150px !important;  // blow it up big enough
-    height: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
+    max-height: 150px !important;
     width: auto !important;
-    margin-top: 0 !important;      // reset vertical shift for cleaner alignment
   }
 
   .favicon {
-    margin-top: 12px;
-    max-height: 24px;
-  }
+    display: block !important;
+    margin-top: 24px !important;
+    margin-bottom: 22px !important;
+    margin-left: 12px !important;
+    min-height: 38px;
+    min-width: 125px !important; 
+ }
 }
-
 
 .b-sidebar {
   position: sticky;

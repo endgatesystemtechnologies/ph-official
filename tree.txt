@@ -1,0 +1,244 @@
+/root/ph-official
+├── .devcontainer
+│   └── devcontainer.json
+├── .dockerignore
+├── .git
+│   ├── HEAD
+│   ├── branches
+│   ├── config
+│   ├── description
+│   ├── hooks
+│   │   ├── applypatch-msg.sample
+│   │   ├── commit-msg.sample
+│   │   ├── fsmonitor-watchman.sample
+│   │   ├── post-update.sample
+│   │   ├── pre-applypatch.sample
+│   │   ├── pre-commit.sample
+│   │   ├── pre-merge-commit.sample
+│   │   ├── pre-push.sample
+│   │   ├── pre-rebase.sample
+│   │   ├── pre-receive.sample
+│   │   ├── prepare-commit-msg.sample
+│   │   ├── push-to-checkout.sample
+│   │   └── update.sample
+│   ├── index
+│   ├── info
+│   │   └── exclude
+│   ├── logs
+│   │   ├── HEAD
+│   │   └── refs
+│   ├── objects
+│   │   ├── info
+│   │   └── pack
+│   ├── packed-refs
+│   └── refs
+│       ├── heads
+│       ├── remotes
+│       └── tags
+├── .gitattributes
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── confirmed-bug.md
+│   │   ├── feature-or-change-request.md
+│   │   ├── general-question.md
+│   │   └── possible-bug--needs-investigation-.md
+│   └── workflows
+│       ├── build-sanity.yml
+│       ├── github-pages.yml
+│       ├── issues.yml
+│       └── release.yml
+├── .gitignore
+├── .goreleaser.yml
+├── CONTRIBUTING.md
+├── Dockerfile
+├── LICENSE
+├── Makefile
+├── README.md
+├── VERSION
+├── cmd
+│   ├── admin.go
+│   ├── archive.go
+│   ├── auth.go
+│   ├── bounce.go
+│   ├── campaigns.go
+│   ├── events.go
+│   ├── handlers.go
+│   ├── i18n.go
+│   ├── import.go
+│   ├── init.go
+│   ├── install.go
+│   ├── lists.go
+│   ├── main.go
+│   ├── maintenance.go
+│   ├── manager_store.go
+│   ├── media.go
+│   ├── public.go
+│   ├── roles.go
+│   ├── settings.go
+│   ├── subscribers.go
+│   ├── templates.go
+│   ├── tx.go
+│   ├── updates.go
+│   ├── upgrade.go
+│   ├── users.go
+│   └── utils.go
+├── config.toml.sample
+├── config_hits.txt
+├── dev
+│   ├── .gitignore
+│   ├── README.md
+│   ├── app.Dockerfile
+│   ├── config.toml
+│   └── docker-compose.yml
+├── docker-compose.yml
+├── docker-entrypoint.sh
+├── docs
+│   ├── README.md
+│   ├── docs
+│   │   ├── content
+│   │   ├── mkdocs.yml
+│   │   └── requirements.txt
+│   ├── i18n
+│   │   ├── index.html
+│   │   ├── main.js
+│   │   ├── style.css
+│   │   └── vue.min.js
+│   ├── site
+│   │   ├── .hugo_build.lock
+│   │   ├── config.toml
+│   │   ├── content
+│   │   ├── data
+│   │   ├── layouts
+│   │   └── static
+│   └── swagger
+│       └── collections.yaml
+├── go.mod
+├── go.sum
+├── i18n
+│   ├── bg.json
+│   ├── ca.json
+│   ├── cs-cz.json
+│   ├── cy.json
+│   ├── da.json
+│   ├── de.json
+│   ├── el.json
+│   ├── en.json
+│   ├── eo.json
+│   ├── es.json
+│   ├── fi.json
+│   ├── fr-CA.json
+│   ├── fr.json
+│   ├── he.json
+│   ├── hu.json
+│   ├── it.json
+│   ├── jp.json
+│   ├── ml.json
+│   ├── nl.json
+│   ├── no.json
+│   ├── pl.json
+│   ├── pt-BR.json
+│   ├── pt.json
+│   ├── ro.json
+│   ├── ru.json
+│   ├── se.json
+│   ├── sk.json
+│   ├── sl.json
+│   ├── tr.json
+│   ├── uk.json
+│   ├── vi.json
+│   ├── zh-CN.json
+│   └── zh-TW.json
+├── internal
+│   ├── auth
+│   │   ├── auth.go
+│   │   └── models.go
+│   ├── bounce
+│   │   ├── bounce.go
+│   │   ├── mailbox
+│   │   └── webhooks
+│   ├── buflog
+│   │   └── buflog.go
+│   ├── captcha
+│   │   └── captcha.go
+│   ├── core
+│   │   ├── bounces.go
+│   │   ├── campaigns.go
+│   │   ├── core.go
+│   │   ├── dashboard.go
+│   │   ├── lists.go
+│   │   ├── media.go
+│   │   ├── roles.go
+│   │   ├── settings.go
+│   │   ├── subscribers.go
+│   │   ├── subscriptions.go
+│   │   ├── templates.go
+│   │   └── users.go
+│   ├── events
+│   │   └── events.go
+│   ├── i18n
+│   │   └── i18n.go
+│   ├── manager
+│   │   ├── manager.go
+│   │   ├── message.go
+│   │   └── pipe.go
+│   ├── media
+│   │   ├── media.go
+│   │   └── providers
+│   ├── messenger
+│   │   ├── email
+│   │   └── postback
+│   ├── migrations
+│   │   ├── v0.4.0.go
+│   │   ├── v0.7.0.go
+│   │   ├── v0.8.0.go
+│   │   ├── v0.9.0.go
+│   │   ├── v1.0.0.go
+│   │   ├── v2.0.0.go
+│   │   ├── v2.1.0.go
+│   │   ├── v2.2.0.go
+│   │   ├── v2.3.0.go
+│   │   ├── v2.4.0.go
+│   │   ├── v2.5.0.go
+│   │   ├── v3.0.0.go
+│   │   ├── v4.0.0.go
+│   │   ├── v4.1.0.go
+│   │   └── v5.0.0.go
+│   ├── notifs
+│   │   └── notifs.go
+│   ├── subimporter
+│   │   └── importer.go
+│   └── utils
+│       └── utils.go
+├── listmonk
+├── listmonk-simple.service
+├── listmonk@.service
+├── models
+│   ├── models.go
+│   ├── queries.go
+│   └── settings.go
+├── permissions.json
+├── project.inlang.json
+├── queries.sql
+├── schema.sql
+├── scripts
+│   └── refresh-i18n.sh
+├── static
+│   ├── email-templates
+│   │   ├── base.html
+│   │   ├── campaign-status.html
+│   │   ├── default-archive.tpl
+│   │   ├── default-visual.json
+│   │   ├── default-visual.tpl
+│   │   ├── default.tpl
+│   │   ├── import-status.html
+│   │   ├── sample-tx.tpl
+│   │   ├── smtp-test.html
+│   │   ├── subscriber-data.html
+│   │   ├── subscriber-optin-campaign.html
+│   │   └── subscriber-optin.html
+│   └── public
+│       ├── static
+│       └── templates
+└── tree.txt
+
+58 directories, 184 files

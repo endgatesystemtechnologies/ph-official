@@ -108,12 +108,6 @@ const routes = [
     component: () => import('../views/Settings.vue'),
   },
   {
-    path: '/settings/logs',
-    name: 'logs',
-    meta: { title: 'logs.title', group: 'settings' },
-    component: () => import('../views/Logs.vue'),
-  },
-  {
     path: '/users',
     name: 'users',
     meta: { title: 'globals.terms.users', group: 'users' },
